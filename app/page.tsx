@@ -34,18 +34,15 @@ import {
 } from "@mui/icons-material";
 import { QRCodeCanvas } from "qrcode.react";
 import { motion, AnimatePresence } from "framer-motion";
+import { BrandLogo } from "@/components/BrandLogo";
+import AdBanner300x250 from "@/components/AdBanner";
 
 // --- Header Component ---
 const Header = () => (
     <AppBar position="fixed" elevation={0} sx={{ bgcolor: "rgba(255,255,255,0.8)", backdropFilter: "blur(12px)", borderBottom: "1px solid #e0e0e0", color: "#1976d2" }}>
         <Toolbar sx={{ justifyContent: "space-between", minHeight: { xs: 56, md: 64 }, px: { xs: 1, sm: 2 } }}>
-            <Box sx={{ display: "flex", alignItems: "center", gap: { xs: 1, sm: 1.5 }, ml: { xs: 0, sm: 1 } }}>
-                <Box sx={{ width: 32, height: 32, borderRadius: "8px", background: "linear-gradient(135deg, #1976d2 0%, #64b5f6 100%)", display: "flex", alignItems: "center", justify: "center", color: "#fff" }}>
-                    <AutoGraph sx={{ fontSize: 20 }} />
-                </Box>
-                <Typography variant="h6" component="div" sx={{ fontWeight: 800, letterSpacing: -0.5, fontSize: { xs: "1.2rem", md: "1.5rem" }, color: "#202124" }}>
-                    Lumina<span style={{ color: "#1976d2" }}>QR</span>
-                </Typography>
+            <Box sx={{ ml: { xs: 0, sm: 1 } }}>
+                <BrandLogo />
             </Box>
 
             <Box sx={{ display: "flex", alignItems: "center", gap: { xs: 0, sm: 0.5 } }}>
@@ -392,12 +389,10 @@ export default function CreatorPage() {
                                             </Button>
                                         </Stack>
 
-                                        {/* AD SLOT Placeholder */}
-                                        <Box sx={{ mt: 4, pt: 3, borderTop: '1px dashed #eee', opacity: 0.6 }}>
-                                            <Typography variant="caption" sx={{ color: '#999', fontSize: 10, letterSpacing: 1 }}>SPONSORED</Typography>
-                                            <Box sx={{ mt: 1, height: 60, bgcolor: '#f1f3f4', borderRadius: 2, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                                <Typography variant="caption" sx={{ color: '#ccc' }}>Ad Slot</Typography>
-                                            </Box>
+                                        {/* AD SLOT - 300x250 */}
+                                        <Box sx={{ mt: 4, pt: 3, borderTop: '1px dashed #eee' }}>
+                                            <Typography variant="caption" sx={{ color: '#999', fontSize: 10, letterSpacing: 1, display: 'block', textAlign: 'center', mb: 1 }}>SPONSORED</Typography>
+                                            <AdBanner300x250 />
                                         </Box>
                                     </Paper>
                                 </motion.div>
