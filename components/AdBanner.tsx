@@ -42,6 +42,7 @@ export default function AdBanner300x250({ placement = "general" }: { placement?:
     return (
         <Box
             ref={adRef}
+            suppressHydrationWarning
             sx={{
                 width: '300px',
                 minHeight: '250px',
@@ -58,7 +59,7 @@ export default function AdBanner300x250({ placement = "general" }: { placement?:
             }}
         >
             <Typography variant="caption" sx={{ position: 'absolute', top: 4, fontSize: 8, color: '#999', opacity: 0.5, zIndex: 1 }}>
-                ADVERTISEMENT
+                AD • ADSTERRA
             </Typography>
 
             {/* Nice placeholder while ad loads */}
@@ -128,6 +129,7 @@ export function AdBanner728x90({ placement = "general" }: { placement?: string }
     return (
         <Box
             ref={adRef}
+            suppressHydrationWarning
             sx={{
                 width: '100%',
                 maxWidth: '728px',
@@ -146,7 +148,7 @@ export function AdBanner728x90({ placement = "general" }: { placement?: string }
             }}
         >
             <Typography variant="caption" sx={{ position: 'absolute', top: 4, fontSize: 8, color: '#999', opacity: 0.5, zIndex: 1 }}>
-                ADVERTISEMENT
+                AD • ADSTERRA
             </Typography>
             <Box sx={{ fontSize: 24, opacity: 0.3, animation: 'pulse 2s ease-in-out infinite' }}>📊</Box>
             <Typography variant="caption" sx={{ color: '#bbb', fontSize: 10 }}>Loading banner ad...</Typography>
@@ -181,6 +183,7 @@ export function NativeBanner({ placement = "general" }: { placement?: string }) 
 
     return (
         <Box
+            suppressHydrationWarning
             sx={{
                 width: '100%',
                 maxWidth: '800px',
@@ -196,7 +199,7 @@ export function NativeBanner({ placement = "general" }: { placement?: string }) 
             }}
         >
             <Typography variant="caption" sx={{ fontSize: 8, color: '#999', opacity: 0.6, mb: 1, display: 'block', textAlign: 'center', zIndex: 1, position: 'relative' }}>
-                SPONSORED CONTENT
+                SPONSORED • ADSTERRA
             </Typography>
             <div id="container-9b4e84791703585706cbeb6c94a84d84" ref={adRef} />
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, py: 2 }}>
@@ -356,12 +359,28 @@ export function PropellerInPagePush() {
     return null;
 }
 
-// PropellerAds - OnClick Popunder (Zone 10364463)
+// PropellerAds - OnClick Popunder (Zone 10364463) - WITH FREQUENCY CAPPING
 export function PropellerOnClickPopunder() {
     const loadedRef = useRef(false);
 
     useEffect(() => {
         if (loadedRef.current || typeof window === 'undefined') return;
+
+        // **FREQUENCY CAPPING**: Check if already shown in this session
+        const STORAGE_KEY = 'propeller_onclick_shown';
+        const lastShown = localStorage.getItem(STORAGE_KEY);
+        const now = Date.now();
+        const ONE_HOUR = 60 * 60 * 1000; // 1 hour in milliseconds
+
+        // Only load if NOT shown in the last hour
+        if (lastShown && (now - parseInt(lastShown)) < ONE_HOUR) {
+            console.log('🚫 OnClick Popunder: Frequency cap active, skipping');
+            return;
+        }
+
+        // Mark as shown
+        localStorage.setItem(STORAGE_KEY, now.toString());
+        console.log('✅ OnClick Popunder: Loaded (next allowed in 1 hour)');
 
         const script = document.createElement('script');
         script.src = 'https://3nbf4.com/onclick/current/onclick.min.js?z=10364463';
