@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Box, Typography } from '@mui/material';
 
 // Adsterra 300x250 Banner
 export default function AdBanner300x250({ placement = "general" }: { placement?: string }) {
     const adRef = useRef<HTMLDivElement>(null);
     const loadedRef = useRef(false);
+    const [showPlaceholder, setShowPlaceholder] = useState(true);
 
     useEffect(() => {
         if (loadedRef.current || !adRef.current) return;
@@ -29,7 +30,14 @@ export default function AdBanner300x250({ placement = "general" }: { placement?:
         adRef.current.appendChild(scriptConfig);
         adRef.current.appendChild(scriptInvoke);
         loadedRef.current = true;
+
+        // Hide after 10 seconds if ad doesn't load
+        const timeout = setTimeout(() => setShowPlaceholder(false), 10000);
+        return () => clearTimeout(timeout);
     }, []);
+
+    // Don't render if timed out
+    if (!showPlaceholder) return null;
 
     return (
         <Box
@@ -85,6 +93,7 @@ export default function AdBanner300x250({ placement = "general" }: { placement?:
 export function AdBanner728x90({ placement = "general" }: { placement?: string }) {
     const adRef = useRef<HTMLDivElement>(null);
     const loadedRef = useRef(false);
+    const [showPlaceholder, setShowPlaceholder] = useState(true);
 
     useEffect(() => {
         if (loadedRef.current || !adRef.current) return;
@@ -107,7 +116,14 @@ export function AdBanner728x90({ placement = "general" }: { placement?: string }
         adRef.current.appendChild(scriptConfig);
         adRef.current.appendChild(scriptInvoke);
         loadedRef.current = true;
+
+        // Hide after 10 seconds if ad doesn't load
+        const timeout = setTimeout(() => setShowPlaceholder(false), 10000);
+        return () => clearTimeout(timeout);
     }, []);
+
+    // Don't render if timed out
+    if (!showPlaceholder) return null;
 
     return (
         <Box
@@ -142,6 +158,7 @@ export function AdBanner728x90({ placement = "general" }: { placement?: string }
 export function NativeBanner({ placement = "general" }: { placement?: string }) {
     const adRef = useRef<HTMLDivElement>(null);
     const loadedRef = useRef(false);
+    const [showPlaceholder, setShowPlaceholder] = useState(true);
 
     useEffect(() => {
         if (loadedRef.current || !adRef.current) return;
@@ -153,7 +170,14 @@ export function NativeBanner({ placement = "general" }: { placement?: string }) 
 
         adRef.current.appendChild(script);
         loadedRef.current = true;
+
+        // Hide after 10 seconds if ad doesn't load
+        const timeout = setTimeout(() => setShowPlaceholder(false), 10000);
+        return () => clearTimeout(timeout);
     }, []);
+
+    // Don't render if timed out
+    if (!showPlaceholder) return null;
 
     return (
         <Box
