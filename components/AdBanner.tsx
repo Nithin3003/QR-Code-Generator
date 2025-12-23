@@ -45,12 +45,38 @@ export default function AdBanner300x250({ placement = "general" }: { placement?:
                 border: '1px solid #f0f0f0',
                 borderRadius: 2,
                 bgcolor: '#fafafa',
-                position: 'relative'
+                position: 'relative',
+                overflow: 'hidden'
             }}
         >
-            <Typography variant="caption" sx={{ position: 'absolute', top: 4, fontSize: 8, color: '#999', opacity: 0.5 }}>
+            <Typography variant="caption" sx={{ position: 'absolute', top: 4, fontSize: 8, color: '#999', opacity: 0.5, zIndex: 1 }}>
                 ADVERTISEMENT
             </Typography>
+
+            {/* Nice placeholder while ad loads */}
+            <Box sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 1,
+                py: 4
+            }}>
+                <Box sx={{
+                    fontSize: 32,
+                    opacity: 0.3,
+                    animation: 'pulse 2s ease-in-out infinite',
+                    '@keyframes pulse': {
+                        '0%, 100%': { opacity: 0.3 },
+                        '50%': { opacity: 0.6 }
+                    }
+                }}>
+                    📢
+                </Box>
+                <Typography variant="caption" sx={{ color: '#bbb', fontSize: 11, textAlign: 'center', px: 2 }}>
+                    Ad content loading...
+                </Typography>
+            </Box>
         </Box>
     );
 }
@@ -91,18 +117,23 @@ export function AdBanner728x90({ placement = "general" }: { placement?: string }
                 maxWidth: '728px',
                 minHeight: '90px',
                 display: 'flex',
+                flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'center',
                 mx: 'auto',
+                gap: 2,
                 border: '1px solid #f0f0f0',
                 borderRadius: 2,
                 bgcolor: '#fafafa',
-                position: 'relative'
+                position: 'relative',
+                overflow: 'hidden'
             }}
         >
-            <Typography variant="caption" sx={{ position: 'absolute', top: 4, fontSize: 8, color: '#999', opacity: 0.5 }}>
+            <Typography variant="caption" sx={{ position: 'absolute', top: 4, fontSize: 8, color: '#999', opacity: 0.5, zIndex: 1 }}>
                 ADVERTISEMENT
             </Typography>
+            <Box sx={{ fontSize: 24, opacity: 0.3, animation: 'pulse 2s ease-in-out infinite' }}>📊</Box>
+            <Typography variant="caption" sx={{ color: '#bbb', fontSize: 10 }}>Loading banner ad...</Typography>
         </Box>
     );
 }
@@ -136,13 +167,18 @@ export function NativeBanner({ placement = "general" }: { placement?: string }) 
                 border: '1px solid #f0f0f0',
                 borderRadius: 3,
                 bgcolor: '#fafafa',
-                position: 'relative'
+                position: 'relative',
+                overflow: 'hidden'
             }}
         >
-            <Typography variant="caption" sx={{ fontSize: 8, color: '#999', opacity: 0.6, mb: 1, display: 'block', textAlign: 'center' }}>
+            <Typography variant="caption" sx={{ fontSize: 8, color: '#999', opacity: 0.6, mb: 1, display: 'block', textAlign: 'center', zIndex: 1, position: 'relative' }}>
                 SPONSORED CONTENT
             </Typography>
             <div id="container-9b4e84791703585706cbeb6c94a84d84" ref={adRef} />
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, py: 2 }}>
+                <Box sx={{ fontSize: 28, opacity: 0.3, animation: 'pulse 2s ease-in-out infinite' }}>🎯</Box>
+                <Typography variant="caption" sx={{ color: '#bbb', fontSize: 11 }}>Loading native content...</Typography>
+            </Box>
         </Box>
     );
 }
