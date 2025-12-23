@@ -90,6 +90,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          src="https://quge5.com/88/tag.min.js"
+          data-zone="195419"
+          async
+          data-cfasync="false"
+        ></script>
+      </head>
       <body>
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
