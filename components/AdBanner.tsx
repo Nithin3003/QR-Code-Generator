@@ -1,140 +1,139 @@
 "use client";
 
-import { useEffect, useRef } from 'react';
 import { Box, Typography } from '@mui/material';
 
-// Adsterra 300x250 Banner
-export const AdBanner300x250 = () => {
-    const adContainerRef = useRef<HTMLDivElement>(null);
-    const adLoadedRef = useRef(false);
-
-    useEffect(() => {
-        if (adLoadedRef.current || !adContainerRef.current) return;
-
-        try {
-            const scriptConfig = document.createElement('script');
-            scriptConfig.type = 'text/javascript';
-            scriptConfig.innerHTML = `
-                atOptions = {
-                    'key' : '67e830159b64ae4a1630b02bbab38e4b',
-                    'format' : 'iframe',
-                    'height' : 250,
-                    'width' : 300,
-                    'params' : {}
-                };
-            `;
-
-            const scriptInvoke = document.createElement('script');
-            scriptInvoke.type = 'text/javascript';
-            scriptInvoke.src = '//www.highperformanceformat.com/67e830159b64ae4a1630b02bbab38e4b/invoke.js';
-            scriptInvoke.async = true;
-
-            adContainerRef.current.appendChild(scriptConfig);
-            adContainerRef.current.appendChild(scriptInvoke);
-
-            adLoadedRef.current = true;
-        } catch (error) {
-            console.error('Adsterra ad loading error:', error);
-        }
-    }, []);
-
-    return (
-        <Box
-            ref={adContainerRef}
-            sx={{
-                minWidth: '300px',
-                minHeight: '250px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                mx: 'auto',
-                bgcolor: '#fafafa',
-                borderRadius: 2,
-                border: '1px solid #f0f0f0'
-            }}
-        />
-    );
-};
-
-// PropellerAds Container
-export const PropellerAd = ({ containerId }: { containerId: string }) => {
-    const adRef = useRef<HTMLDivElement>(null);
-    const loadedRef = useRef(false);
-
-    useEffect(() => {
-        if (loadedRef.current || !adRef.current) return;
-
-        try {
-            const script = document.createElement('script');
-            script.async = true;
-            script.dataset.cfasync = 'false';
-            script.src = '//pl24183952.profitablecpmrate.com/5f51a81584d19c2bdbde3b56bee480e0/invoke.js';
-
-            adRef.current.appendChild(script);
-            loadedRef.current = true;
-        } catch (error) {
-            console.error('PropellerAds loading error:', error);
-        }
-    }, []);
-
-    return (
-        <Box
-            sx={{
-                minWidth: '300px',
-                minHeight: '250px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                mx: 'auto',
-                bgcolor: '#fafafa',
-                borderRadius: 2,
-                border: '1px solid #f0f0f0'
-            }}
-        >
-            <div id={containerId} ref={adRef} />
-        </Box>
-    );
-};
-
-// Ezoic Placeholder
-export const EzoicAd = ({ placeholderId }: { placeholderId: string }) => {
-    return (
-        <Box
-            sx={{
-                minWidth: '300px',
-                minHeight: '250px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                mx: 'auto',
-                bgcolor: '#fafafa',
-                borderRadius: 2,
-                border: '1px solid #f0f0f0'
-            }}
-        >
-            <div id={placeholderId} style={{ minHeight: '250px', minWidth: '300px' }} />
-        </Box>
-    );
-};
-
-// Ad Container with Label
-interface AdContainerProps {
-    children: React.ReactNode;
-    label?: string;
+interface AdBannerProps {
+    placement?: string;
 }
 
-export const AdContainer = ({ children, label = "SPONSORED" }: AdContainerProps) => {
+export default function AdBanner300x250({ placement = "general" }: AdBannerProps) {
     return (
         <Box
             sx={{
+                width: '300px',
+                minHeight: '250px',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                my: 4,
-                py: 3,
+                justifyContent: 'center',
+                mx: 'auto',
+                my: 2,
+                p: 0,
+                position: 'relative',
+                border: '1px solid #f0f0f0',
+                borderRadius: 2,
+                overflow: 'hidden',
+                bgcolor: '#fafafa'
+            }}
+        >
+            <Typography
+                variant="caption"
+                sx={{
+                    position: 'absolute',
+                    top: 4,
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    color: '#999',
+                    fontSize: 9,
+                    letterSpacing: 1.5,
+                    opacity: 0.5,
+                    zIndex: 0
+                }}
+            >
+                ADVERTISEMENT
+            </Typography>
+
+            {/* The 300x250 ad will load here via the script in layout.tsx */}
+            <Box
+                sx={{
+                    width: '100%',
+                    height: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    minHeight: 250
+                }}
+            >
+                {/* PropellerAds 300x250 banner */}
+            </Box>
+        </Box>
+    );
+}
+
+// 728x90 Leaderboard Banner Component
+export function AdBanner728x90({ placement = "general" }: AdBannerProps) {
+    return (
+        <Box
+            sx={{
+                width: '100%',
+                maxWidth: '728px',
+                minHeight: '90px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                mx: 'auto',
+                my: 2,
+                p: 0,
+                position: 'relative',
+                border: '1px solid #f0f0f0',
+                borderRadius: 2,
+                overflow: 'hidden',
+                bgcolor: '#fafafa'
+            }}
+        >
+            <Typography
+                variant="caption"
+                sx={{
+                    position: 'absolute',
+                    top: 4,
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    color: '#999',
+                    fontSize: 9,
+                    letterSpacing: 1.5,
+                    opacity: 0.5,
+                    zIndex: 0
+                }}
+            >
+                ADVERTISEMENT
+            </Typography>
+
+            {/* The 728x90 ad will load here via the script in layout.tsx */}
+            <Box
+                sx={{
+                    width: '100%',
+                    height: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    minHeight: 90
+                }}
+            >
+                {/* PropellerAds 728x90 leaderboard */}
+            </Box>
+        </Box>
+    );
+}
+
+// Native Banner Component
+export function NativeBanner({ placement = "general" }: AdBannerProps) {
+    return (
+        <Box
+            sx={{
+                width: '100%',
+                maxWidth: '800px',
+                minHeight: '120px',
+                display: 'flex',
+                flexDirection: 'column',
+                mx: 'auto',
+                my: 3,
+                p: 2,
+                position: 'relative',
+                border: '1px solid #f0f0f0',
                 borderRadius: 3,
-                bgcolor: 'rgba(0,0,0,0.02)',
-                transition: 'all 0.3s ease'
+                overflow: 'hidden',
+                bgcolor: '#fafafa'
             }}
         >
             <Typography
@@ -143,16 +142,16 @@ export const AdContainer = ({ children, label = "SPONSORED" }: AdContainerProps)
                     color: '#999',
                     fontSize: 9,
                     letterSpacing: 1.5,
-                    mb: 2,
-                    fontWeight: 600,
-                    opacity: 0.6
+                    mb: 1,
+                    opacity: 0.6,
+                    textAlign: 'center'
                 }}
             >
-                {label}
+                SPONSORED CONTENT
             </Typography>
-            {children}
+
+            {/* Native Banner Container - PropellerAds will populate this */}
+            <div id="container-9b4e84791703585706cbeb6c94a84d84" style={{ width: '100%' }}></div>
         </Box>
     );
-};
-
-export default AdBanner300x250;
+}
