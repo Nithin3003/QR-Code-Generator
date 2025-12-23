@@ -1,0 +1,7 @@
+# PropellerAds
+5gvci.com, 10364434, DIRECT
+
+# Google AdSense (if you have it)
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+
+# Add more ad networks as needed

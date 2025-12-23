@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://lumina-qr.vercel.app/sitemap.xml
+
+# Disallow admin routes
+Disallow: /admin
+Disallow: /api/
+
+# Allow static assets
+Allow: /_next/static/
+Allow: /public/
