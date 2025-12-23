@@ -5,9 +5,82 @@ import theme from './theme';
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "LuminaQR",
-  description: "High-performance, Edge-native, Serverless QR Code Generator",
+  title: {
+    default: "LuminaQR - Free QR Code Generator | Fast & Reliable",
+    template: "%s | LuminaQR"
+  },
+  description: "Generate high-quality QR codes instantly with LuminaQR. Free, fast, and serverless QR code generator. Create QR codes for URLs, text, WiFi, and more. No registration required.",
+  keywords: [
+    "QR code generator",
+    "free QR code",
+    "QR code maker",
+    "create QR code",
+    "generate QR code online",
+    "QR code creator",
+    "dynamic QR code",
+    "URL shortener",
+    "link shortener",
+    "QR code scanner",
+    "business QR code",
+    "WiFi QR code",
+    "vCard QR code"
+  ],
+  authors: [{ name: "LuminaQR Team" }],
+  creator: "LuminaQR",
+  publisher: "LuminaQR",
   manifest: "/manifest.json",
+
+  // OpenGraph
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://lumina-qr.vercel.app",
+    title: "LuminaQR - Free QR Code Generator",
+    description: "Generate high-quality QR codes instantly. Free, fast, and serverless QR code generator for URLs, text, WiFi, and more.",
+    siteName: "LuminaQR",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "LuminaQR - Free QR Code Generator"
+      }
+    ]
+  },
+
+  // Twitter
+  twitter: {
+    card: "summary_large_image",
+    title: "LuminaQR - Free QR Code Generator",
+    description: "Generate high-quality QR codes instantly. Free, fast, and serverless.",
+    images: ["/og-image.png"],
+    creator: "@luminaqr"
+  },
+
+  // Additional metadata
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+
+  verification: {
+    google: "your-google-verification-code",
+    // yandex: "your-yandex-verification-code",
+    // bing: "your-bing-verification-code",
+  },
+
+  alternates: {
+    canonical: "https://lumina-qr.vercel.app"
+  },
+
+  category: "Technology",
 };
 
 export default function RootLayout({
