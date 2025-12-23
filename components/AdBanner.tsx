@@ -1,14 +1,39 @@
 "use client";
 
+import { useEffect, useRef } from 'react';
 import { Box, Typography } from '@mui/material';
 
-interface AdBannerProps {
-    placement?: string;
-}
+// Adsterra 300x250 Banner
+export default function AdBanner300x250({ placement = "general" }: { placement?: string }) {
+    const adRef = useRef<HTMLDivElement>(null);
+    const loadedRef = useRef(false);
 
-export default function AdBanner300x250({ placement = "general" }: AdBannerProps) {
+    useEffect(() => {
+        if (loadedRef.current || !adRef.current) return;
+
+        const scriptConfig = document.createElement('script');
+        scriptConfig.innerHTML = `
+            atOptions = {
+                'key' : '67e830159b64ae4a1630b02bbab38e4b',
+                'format' : 'iframe',
+                'height' : 250,
+                'width' : 300,
+                'params' : {}
+            };
+        `;
+
+        const scriptInvoke = document.createElement('script');
+        scriptInvoke.src = 'https://www.highperformanceformat.com/67e830159b64ae4a1630b02bbab38e4b/invoke.js';
+        scriptInvoke.async = true;
+
+        adRef.current.appendChild(scriptConfig);
+        adRef.current.appendChild(scriptInvoke);
+        loadedRef.current = true;
+    }, []);
+
     return (
         <Box
+            ref={adRef}
             sx={{
                 width: '300px',
                 minHeight: '250px',
@@ -17,141 +42,155 @@ export default function AdBanner300x250({ placement = "general" }: AdBannerProps
                 alignItems: 'center',
                 justifyContent: 'center',
                 mx: 'auto',
-                my: 2,
-                p: 0,
-                position: 'relative',
                 border: '1px solid #f0f0f0',
                 borderRadius: 2,
-                overflow: 'hidden',
-                bgcolor: '#fafafa'
+                bgcolor: '#fafafa',
+                position: 'relative'
             }}
         >
-            <Typography
-                variant="caption"
-                sx={{
-                    position: 'absolute',
-                    top: 4,
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    color: '#999',
-                    fontSize: 9,
-                    letterSpacing: 1.5,
-                    opacity: 0.5,
-                    zIndex: 0
-                }}
-            >
+            <Typography variant="caption" sx={{ position: 'absolute', top: 4, fontSize: 8, color: '#999', opacity: 0.5 }}>
                 ADVERTISEMENT
             </Typography>
-
-            {/* The 300x250 ad will load here via the script in layout.tsx */}
-            <Box
-                sx={{
-                    width: '100%',
-                    height: '100%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    minHeight: 250
-                }}
-            >
-                {/* PropellerAds 300x250 banner */}
-            </Box>
         </Box>
     );
 }
 
-// 728x90 Leaderboard Banner Component
-export function AdBanner728x90({ placement = "general" }: AdBannerProps) {
+// Adsterra 728x90 Leaderboard
+export function AdBanner728x90({ placement = "general" }: { placement?: string }) {
+    const adRef = useRef<HTMLDivElement>(null);
+    const loadedRef = useRef(false);
+
+    useEffect(() => {
+        if (loadedRef.current || !adRef.current) return;
+
+        const scriptConfig = document.createElement('script');
+        scriptConfig.innerHTML = `
+            atOptions = {
+                'key' : 'b29ad6bfaa9af19133c9f78db0f3f771',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+            };
+        `;
+
+        const scriptInvoke = document.createElement('script');
+        scriptInvoke.src = 'https://www.highperformanceformat.com/b29ad6bfaa9af19133c9f78db0f3f771/invoke.js';
+        scriptInvoke.async = true;
+
+        adRef.current.appendChild(scriptConfig);
+        adRef.current.appendChild(scriptInvoke);
+        loadedRef.current = true;
+    }, []);
+
     return (
         <Box
+            ref={adRef}
             sx={{
                 width: '100%',
                 maxWidth: '728px',
                 minHeight: '90px',
                 display: 'flex',
-                flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
                 mx: 'auto',
-                my: 2,
-                p: 0,
-                position: 'relative',
                 border: '1px solid #f0f0f0',
                 borderRadius: 2,
-                overflow: 'hidden',
-                bgcolor: '#fafafa'
+                bgcolor: '#fafafa',
+                position: 'relative'
             }}
         >
-            <Typography
-                variant="caption"
-                sx={{
-                    position: 'absolute',
-                    top: 4,
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    color: '#999',
-                    fontSize: 9,
-                    letterSpacing: 1.5,
-                    opacity: 0.5,
-                    zIndex: 0
-                }}
-            >
+            <Typography variant="caption" sx={{ position: 'absolute', top: 4, fontSize: 8, color: '#999', opacity: 0.5 }}>
                 ADVERTISEMENT
             </Typography>
-
-            {/* The 728x90 ad will load here via the script in layout.tsx */}
-            <Box
-                sx={{
-                    width: '100%',
-                    height: '100%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    minHeight: 90
-                }}
-            >
-                {/* PropellerAds 728x90 leaderboard */}
-            </Box>
         </Box>
     );
 }
 
-// Native Banner Component
-export function NativeBanner({ placement = "general" }: AdBannerProps) {
+// Adsterra Native Banner
+export function NativeBanner({ placement = "general" }: { placement?: string }) {
+    const adRef = useRef<HTMLDivElement>(null);
+    const loadedRef = useRef(false);
+
+    useEffect(() => {
+        if (loadedRef.current || !adRef.current) return;
+
+        const script = document.createElement('script');
+        script.async = true;
+        script.dataset.cfasync = 'false';
+        script.src = 'https://pl28316798.effectivegatecpm.com/9b4e84791703585706cbeb6c94a84d84/invoke.js';
+
+        adRef.current.appendChild(script);
+        loadedRef.current = true;
+    }, []);
+
     return (
         <Box
             sx={{
                 width: '100%',
                 maxWidth: '800px',
                 minHeight: '120px',
-                display: 'flex',
-                flexDirection: 'column',
                 mx: 'auto',
-                my: 3,
+                my: 2,
                 p: 2,
-                position: 'relative',
                 border: '1px solid #f0f0f0',
                 borderRadius: 3,
-                overflow: 'hidden',
-                bgcolor: '#fafafa'
+                bgcolor: '#fafafa',
+                position: 'relative'
             }}
         >
-            <Typography
-                variant="caption"
-                sx={{
-                    color: '#999',
-                    fontSize: 9,
-                    letterSpacing: 1.5,
-                    mb: 1,
-                    opacity: 0.6,
-                    textAlign: 'center'
-                }}
-            >
+            <Typography variant="caption" sx={{ fontSize: 8, color: '#999', opacity: 0.6, mb: 1, display: 'block', textAlign: 'center' }}>
                 SPONSORED CONTENT
             </Typography>
-
-            {/* Native Banner Container - PropellerAds will populate this */}
-            <div id="container-9b4e84791703585706cbeb6c94a84d84" style={{ width: '100%' }}></div>
+            <div id="container-9b4e84791703585706cbeb6c94a84d84" ref={adRef} />
         </Box>
     );
+}
+
+// Adsterra Popunder - Loads once on page
+export function PopunderAd() {
+    const loadedRef = useRef(false);
+
+    useEffect(() => {
+        if (loadedRef.current || typeof window === 'undefined') return;
+
+        const script = document.createElement('script');
+        script.src = 'https://pl28316797.effectivegatecpm.com/ad/39/16/ad391620cfa4a924ec927c81dfc78824.js';
+        script.async = true;
+
+        document.body.appendChild(script);
+        loadedRef.current = true;
+
+        return () => {
+            if (script.parentNode) {
+                script.parentNode.removeChild(script);
+            }
+        };
+    }, []);
+
+    return null; // Popunder doesn't need visual component
+}
+
+// Adsterra Social Bar
+export function SocialBar() {
+    const loadedRef = useRef(false);
+
+    useEffect(() => {
+        if (loadedRef.current || typeof window === 'undefined') return;
+
+        const script = document.createElement('script');
+        script.src = 'https://pl28316810.effectivegatecpm.com/47/e8/1c/47e81cb75a002934d7dedacb12edca54.js';
+        script.async = true;
+
+        document.body.appendChild(script);
+        loadedRef.current = true;
+
+        return () => {
+            if (script.parentNode) {
+                script.parentNode.removeChild(script);
+            }
+        };
+    }, []);
+
+    return null; // Social bar is positioned automatically
 }

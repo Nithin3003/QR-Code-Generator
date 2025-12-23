@@ -35,7 +35,7 @@ import {
 import { QRCodeCanvas } from "qrcode.react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BrandLogo } from "@/components/BrandLogo";
-import AdBanner300x250, { NativeBanner, AdBanner728x90 } from "@/components/AdBanner";
+import AdBanner300x250, { NativeBanner, AdBanner728x90, PopunderAd, SocialBar } from "@/components/AdBanner";
 
 // --- Header Component ---
 const Header = () => (
@@ -169,6 +169,12 @@ export default function CreatorPage() {
 
     return (
         <Box sx={{ minHeight: "100vh", bgcolor: "#fff", display: "flex", flexDirection: "column" }}>
+            {/* Popunder Ad - Loads once */}
+            <PopunderAd />
+
+            {/* Social Bar - Sticky bottom */}
+            <SocialBar />
+
             <Header />
 
             <Container maxWidth="lg" sx={{ pt: { xs: 10, md: 15 }, pb: 12, flex: 1 }}>
