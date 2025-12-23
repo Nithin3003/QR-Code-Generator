@@ -91,14 +91,31 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* PropellerAds - OnClick (Popunder) */}
         <script
           src="https://quge5.com/88/tag.min.js"
-          data-zone="195419"
+          data-zone="10364463"
           async
           data-cfasync="false"
         ></script>
+
+        {/* PropellerAds - In-Page Push */}
+        <script
+          async
+          data-cfasync="false"
+          src="//pl24457098.profitablecpmrate.com/5f51a81584d19c2bdbde3b56bee480e0/invoke.js"
+        ></script>
+
+        {/* PropellerAds - Vignette Banner */}
+        <script
+          type="text/javascript"
+          src="//pl24457098.profitablecpmrate.com/cf/aa/48/cfaa48f5a13b7f0e9de29e3db17ced77.js"
+        ></script>
       </head>
       <body>
+        {/* PropellerAds In-Page Push Container */}
+        <div id="container-5f51a81584d19c2bdbde3b56bee480e0"></div>
+
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <div className="min-h-screen">

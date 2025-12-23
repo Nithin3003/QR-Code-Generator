@@ -35,7 +35,6 @@ import {
 import { QRCodeCanvas } from "qrcode.react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BrandLogo } from "@/components/BrandLogo";
-import AdBanner300x250 from "@/components/AdBanner";
 
 // --- Header Component ---
 const Header = () => (
@@ -259,11 +258,7 @@ export default function CreatorPage() {
                             </Button>
                         </Paper>
 
-                        {/* Ad Banner Below Input */}
-                        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 10, mb: 8 }}>
-                            <Typography variant="caption" sx={{ color: '#999', fontSize: 10, letterSpacing: 1, mb: 2 }}>SPONSORED</Typography>
-                            <AdBanner300x250 />
-                        </Box>
+
 
                         {/* Featured Tools / Credibility Section */}
                         <Box sx={{ mt: 10 }}>
@@ -292,11 +287,7 @@ export default function CreatorPage() {
                             </Grid>
                         </Box>
 
-                        {/* Ad Banner After Features */}
-                        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 10 }}>
-                            <Typography variant="caption" sx={{ color: '#999', fontSize: 10, letterSpacing: 1, mb: 2 }}>SPONSORED</Typography>
-                            <AdBanner300x250 />
-                        </Box>
+
                     </Box>
 
                     {/* Right: QR Canvas & Illustration Style Result */}
@@ -390,12 +381,12 @@ export default function CreatorPage() {
                                             </Button>
                                         </Box>
 
-                                        {/* Ad Content */}
+                                        {/* PropellerAds In-Page Push will display here */}
                                         <Box sx={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
                                             <Typography variant="caption" sx={{ color: '#999', fontSize: 10, letterSpacing: 1, mb: 2 }}>
                                                 SPONSORED
                                             </Typography>
-                                            <AdBanner300x250 />
+                                            <div id="container-5f51a81584d19c2bdbde3b56bee480e0"></div>
                                         </Box>
 
                                         {/* Info Text */}
@@ -488,11 +479,7 @@ export default function CreatorPage() {
                                             </Button>
                                         </Stack>
 
-                                        {/* AD SLOT - 300x250 */}
-                                        <Box sx={{ mt: 4, pt: 3, borderTop: '1px dashed #eee' }}>
-                                            <Typography variant="caption" sx={{ color: '#999', fontSize: 10, letterSpacing: 1, display: 'block', textAlign: 'center', mb: 1 }}>SPONSORED</Typography>
-                                            <AdBanner300x250 />
-                                        </Box>
+
                                     </Paper>
                                 </motion.div>
                             )}
@@ -505,11 +492,7 @@ export default function CreatorPage() {
             <Box sx={{ borderTop: '1px solid #f1f3f4', bgcolor: '#fff', py: 12 }}>
 
                 <Container maxWidth="lg">
-                    {/* Ad Banner Above Tools Section */}
-                    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mb: 8 }}>
-                        <Typography variant="caption" sx={{ color: '#999', fontSize: 10, letterSpacing: 1, mb: 2 }}>SPONSORED</Typography>
-                        <AdBanner300x250 />
-                    </Box>
+
 
                     <Typography variant="h4" sx={{ fontWeight: 800, textAlign: 'center', mb: 8 }}>More Tools for Creators</Typography>
                     <Grid container spacing={4}>
@@ -528,11 +511,7 @@ export default function CreatorPage() {
                         ))}
                     </Grid>
 
-                    {/* Ad Banner Below Tools Section */}
-                    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 10 }}>
-                        <Typography variant="caption" sx={{ color: '#999', fontSize: 10, letterSpacing: 1, mb: 2 }}>SPONSORED</Typography>
-                        <AdBanner300x250 />
-                    </Box>
+
                 </Container>
             </Box >
 
