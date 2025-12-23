@@ -88,8 +88,8 @@ const ActivityTicker = () => {
     );
 };
 
+
 export default function CreatorPage() {
-    const [mounted, setMounted] = useState(false);
     const [text, setText] = useState("");
     const [shortUrl, setShortUrl] = useState("");
     const [loading, setLoading] = useState(false);
@@ -98,18 +98,6 @@ export default function CreatorPage() {
     const [alert, setAlert] = useState<{ open: boolean; message: string; severity: 'success' | 'error' }>({ open: false, message: '', severity: 'success' });
     const qrRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-        setMounted(true);
-
-        // Initialize Ezoic ads after mount
-        // Temporarily disabled until Ezoic approves the site
-        // if (typeof window !== 'undefined' && (window as any).ezstandalone) {
-        //     (window as any).ezstandalone.cmd.push(function () {
-        //         (window as any).ezstandalone.showAds(101, 102, 103, 104, 105);
-        //     });
-        // }
-    }, []);
-
     // Countdown timer for ad
     useEffect(() => {
         if (showAd && adCountdown > 0) {
@@ -117,8 +105,6 @@ export default function CreatorPage() {
             return () => clearTimeout(timer);
         }
     }, [showAd, adCountdown]);
-
-    if (!mounted) return null;
 
     const skipAd = () => {
         setShowAd(false);
