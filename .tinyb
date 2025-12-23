@@ -1,0 +1,13 @@
+{
+    "host": "https://api.europe-west2.gcp.tinybird.co",
+    "id": "1fbe0c01-8747-46d4-93b1-1b86b93e264d",
+    "name": "qrcode",
+    "scope": "user",
+    "token": "p.eyJ1IjogIjFmYmUwYzAxLTg3NDctNDZkNC05M2IxLTFiODZiOTNlMjY0ZCIsICJpZCI6ICJhYzQ2YjIzNC00NjNmLTRiZGEtOTMwNy03MjlhNTM1OTM2ZDgiLCAiaG9zdCI6ICJnY3AtZXVyb3BlLXdlc3QyIn0.hScmwIt6BmcjumWa1Oru7a-7hEQQDbk6HcH9IKaTrYE",
+    "tokens": {
+        "https://api.europe-west2.gcp.tinybird.co": "p.eyJ1IjogIjFmYmUwYzAxLTg3NDctNDZkNC05M2IxLTFiODZiOTNlMjY0ZCIsICJpZCI6ICJhYzQ2YjIzNC00NjNmLTRiZGEtOTMwNy03MjlhNTM1OTM2ZDgiLCAiaG9zdCI6ICJnY3AtZXVyb3BlLXdlc3QyIn0.hScmwIt6BmcjumWa1Oru7a-7hEQQDbk6HcH9IKaTrYE"
+    },
+    "user_email": "msnithin84@gmail.com",
+    "user_id": "ec8bdc7e-e132-4fe7-96cd-943d6fafefcb",
+    "version": "5.22.0"
+}

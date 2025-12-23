@@ -1,0 +1,12 @@
+TOKEN "QR_ANALYTICS_INGEST" APPEND
+
+
+SCHEMA >
+    `shortId` String,
+    `country` String,
+    `ua` String,
+    `timestamp` DateTime
+
+ENGINE "MergeTree"
+ENGINE_PARTITION_KEY "toYYYYMM(timestamp)"
+ENGINE_SORTING_KEY "timestamp"
