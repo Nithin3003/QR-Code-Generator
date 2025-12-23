@@ -182,7 +182,7 @@ export default function CreatorPage() {
             <PropellerPushNotifications />
             <PropellerVignetteBanner />
             <PropellerInPagePush />
-            <PropellerOnClickPopunder />
+            {/* OnClick Popunder REMOVED for better UX */}
 
             <Header />
 
@@ -268,7 +268,35 @@ export default function CreatorPage() {
                             </Button>
                         </Paper>
 
-                        {/* ========== COMPREHENSIVE AD ZONE - Below Hero ========== */}
+
+                        {/* Featured Tools / Credibility Section */}
+                        <Box sx={{ mt: 10 }}>
+                            <Typography variant="overline" sx={{ color: "#70757a", letterSpacing: "0.1em", fontWeight: 700 }}>
+                                WHY CHOOSE LUMINA
+                            </Typography>
+                            <Grid container spacing={4} sx={{ mt: 1 }}>
+                                <Grid size={{ xs: 12, sm: 4 }}>
+                                    <Stack direction="row" spacing={1.5} alignItems="center">
+                                        <Speed sx={{ color: "#1976d2" }} />
+                                        <Typography variant="body2" sx={{ fontWeight: 600 }}>Instant Edge Generation</Typography>
+                                    </Stack>
+                                </Grid>
+                                <Grid size={{ xs: 12, sm: 4 }}>
+                                    <Stack direction="row" spacing={1.5} alignItems="center">
+                                        <Security sx={{ color: "#1976d2" }} />
+                                        <Typography variant="body2" sx={{ fontWeight: 600 }}>Zero Data Tracking</Typography>
+                                    </Stack>
+                                </Grid>
+                                <Grid size={{ xs: 12, sm: 4 }}>
+                                    <Stack direction="row" spacing={1.5} alignItems="center">
+                                        <AutoGraph sx={{ color: "#1976d2" }} />
+                                        <Typography variant="body2" sx={{ fontWeight: 600 }}>Real-time Analytics</Typography>
+                                    </Stack>
+                                </Grid>
+                            </Grid>
+                        </Box>
+
+                        {/* ========== COMPREHENSIVE AD ZONE - After Hero Section ========== */}
                         <Box
                             sx={{
                                 my: 6,
@@ -317,39 +345,6 @@ export default function CreatorPage() {
                             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                                 <AdBanner728x90 placement="hero-bottom" />
                             </Box>
-                        </Box>
-
-
-                        {/* Featured Tools / Credibility Section */}
-                        <Box sx={{ mt: 10 }}>
-                            <Typography variant="overline" sx={{ color: "#70757a", letterSpacing: "0.1em", fontWeight: 700 }}>
-                                WHY CHOOSE LUMINA
-                            </Typography>
-                            <Grid container spacing={4} sx={{ mt: 1 }}>
-                                <Grid size={{ xs: 12, sm: 4 }}>
-                                    <Stack direction="row" spacing={1.5} alignItems="center">
-                                        <Speed sx={{ color: "#1976d2" }} />
-                                        <Typography variant="body2" sx={{ fontWeight: 600 }}>Instant Edge Generation</Typography>
-                                    </Stack>
-                                </Grid>
-                                <Grid size={{ xs: 12, sm: 4 }}>
-                                    <Stack direction="row" spacing={1.5} alignItems="center">
-                                        <Security sx={{ color: "#1976d2" }} />
-                                        <Typography variant="body2" sx={{ fontWeight: 600 }}>Zero Data Tracking</Typography>
-                                    </Stack>
-                                </Grid>
-                                <Grid size={{ xs: 12, sm: 4 }}>
-                                    <Stack direction="row" spacing={1.5} alignItems="center">
-                                        <AutoGraph sx={{ color: "#1976d2" }} />
-                                        <Typography variant="body2" sx={{ fontWeight: 600 }}>Real-time Analytics</Typography>
-                                    </Stack>
-                                </Grid>
-                            </Grid>
-                        </Box>
-
-                        {/* Ad Placement 2 - After Features */}
-                        <Box sx={{ display: 'flex', justifyContent: 'center', my: 4 }}>
-                            <NativeBanner placement="after-features" />
                         </Box>
                     </Box>
 

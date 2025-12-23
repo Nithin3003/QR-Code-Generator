@@ -115,71 +115,7 @@ export default function RootLayout({
           }}
         />
 
-        {/* PropellerAds - OnClick (Popunder) */}
-        <script
-          src="https://quge5.com/88/tag.min.js"
-          data-zone="10364463"
-          async
-          data-cfasync="false"
-        ></script>
-
-        {/* PropellerAds - In-Page Push */}
-        <script
-          async
-          data-cfasync="false"
-          src="//pl24457098.profitablecpmrate.com/5f51a81584d19c2bdbde3b56bee480e0/invoke.js"
-        ></script>
-
-        {/* PropellerAds - Vignette Banner */}
-        <script
-          type="text/javascript"
-          src="//pl24457098.profitablecpmrate.com/cf/aa/48/cfaa48f5a13b7f0e9de29e3db17ced77.js"
-        ></script>
-
-        {/* PropellerAds - 300x250 Banner */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              atOptions = {
-                'key' : '67e830159b64ae4a1630b02bbab38e4b',
-                'format' : 'iframe',
-                'height' : 250,
-                'width' : 300,
-                'params' : {}
-              };
-            `
-          }}
-        />
-        <script src="https://www.highperformanceformat.com/67e830159b64ae4a1630b02bbab38e4b/invoke.js"></script>
-
-        {/* PropellerAds - Native Banner */}
-        <script
-          async
-          data-cfasync="false"
-          src="https://pl28316798.effectivegatecpm.com/9b4e84791703585706cbeb6c94a84d84/invoke.js"
-        ></script>
-
-        {/* PropellerAds - 728x90 Leaderboard */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              atOptions = {
-                'key' : 'b29ad6bfaa9af19133c9f78db0f3f771',
-                'format' : 'iframe',
-                'height' : 90,
-                'width' : 728,
-                'params' : {}
-              };
-            `
-          }}
-        />
-        <script src="https://www.highperformanceformat.com/b29ad6bfaa9af19133c9f78db0f3f771/invoke.js"></script>
-
-        {/* PropellerAds - Popunder */}
-        <script src="https://pl28316797.effectivegatecpm.com/ad/39/16/ad391620cfa4a924ec927c81dfc78824.js"></script>
-
-        {/* PropellerAds - Social Bar */}
-        <script src="https://pl28316810.effectivegatecpm.com/47/e8/1c/47e81cb75a002934d7dedacb12edca54.js"></script>
+        {/* Ad scripts removed - now loaded via components for better control */}
       </head>
       <body>
         {/* PropellerAds In-Page Push Container */}
