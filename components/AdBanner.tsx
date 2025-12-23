@@ -194,3 +194,129 @@ export function SocialBar() {
 
     return null; // Social bar is positioned automatically
 }
+
+// Additional Ad Tag Zone (quge5.com - Zone 195419)
+export function AdTagZone() {
+    const loadedRef = useRef(false);
+
+    useEffect(() => {
+        if (loadedRef.current || typeof window === 'undefined') return;
+
+        const script = document.createElement('script');
+        script.src = 'https://quge5.com/88/tag.min.js';
+        script.dataset.zone = '195419';
+        script.async = true;
+        script.dataset.cfasync = 'false';
+
+        document.body.appendChild(script);
+        loadedRef.current = true;
+
+        return () => {
+            if (script.parentNode) {
+                script.parentNode.removeChild(script);
+            }
+        };
+    }, []);
+
+    return null; // Loads globally
+}
+
+// PropellerAds - Push Notifications (Zone 10364466)
+export function PropellerPushNotifications() {
+    const loadedRef = useRef(false);
+
+    useEffect(() => {
+        if (loadedRef.current || typeof window === 'undefined') return;
+
+        const script = document.createElement('script');
+        script.src = 'https://3nbf4.com/pfe/current/micro.tag.min.js?z=10364466';
+        script.dataset.cfasync = 'false';
+        script.async = true;
+
+        document.body.appendChild(script);
+        loadedRef.current = true;
+
+        return () => {
+            if (script.parentNode) {
+                script.parentNode.removeChild(script);
+            }
+        };
+    }, []);
+
+    return null;
+}
+
+// PropellerAds - Vignette Banner (Zone 10364465)
+export function PropellerVignetteBanner() {
+    const loadedRef = useRef(false);
+
+    useEffect(() => {
+        if (loadedRef.current || typeof window === 'undefined') return;
+
+        const script = document.createElement('script');
+        script.src = 'https://3nbf4.com/vignette/current/vignette.min.js?z=10364465';
+        script.dataset.cfasync = 'false';
+        script.async = true;
+
+        document.body.appendChild(script);
+        loadedRef.current = true;
+
+        return () => {
+            if (script.parentNode) {
+                script.parentNode.removeChild(script);
+            }
+        };
+    }, []);
+
+    return null;
+}
+
+// PropellerAds - In-Page Push (Zone 10364464)
+export function PropellerInPagePush() {
+    const loadedRef = useRef(false);
+
+    useEffect(() => {
+        if (loadedRef.current || typeof window === 'undefined') return;
+
+        const script = document.createElement('script');
+        script.src = 'https://3nbf4.com/inpage/current/inpage.min.js?z=10364464';
+        script.dataset.cfasync = 'false';
+        script.async = true;
+
+        document.body.appendChild(script);
+        loadedRef.current = true;
+
+        return () => {
+            if (script.parentNode) {
+                script.parentNode.removeChild(script);
+            }
+        };
+    }, []);
+
+    return null;
+}
+
+// PropellerAds - OnClick Popunder (Zone 10364463)
+export function PropellerOnClickPopunder() {
+    const loadedRef = useRef(false);
+
+    useEffect(() => {
+        if (loadedRef.current || typeof window === 'undefined') return;
+
+        const script = document.createElement('script');
+        script.src = 'https://3nbf4.com/onclick/current/onclick.min.js?z=10364463';
+        script.dataset.cfasync = 'false';
+        script.async = true;
+
+        document.body.appendChild(script);
+        loadedRef.current = true;
+
+        return () => {
+            if (script.parentNode) {
+                script.parentNode.removeChild(script);
+            }
+        };
+    }, []);
+
+    return null;
+}

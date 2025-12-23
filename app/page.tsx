@@ -35,7 +35,7 @@ import {
 import { QRCodeCanvas } from "qrcode.react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BrandLogo } from "@/components/BrandLogo";
-import AdBanner300x250, { NativeBanner, AdBanner728x90, PopunderAd, SocialBar } from "@/components/AdBanner";
+import AdBanner300x250, { NativeBanner, AdBanner728x90, PopunderAd, SocialBar, AdTagZone, PropellerPushNotifications, PropellerVignetteBanner, PropellerInPagePush, PropellerOnClickPopunder } from "@/components/AdBanner";
 
 // --- Header Component ---
 const Header = () => (
@@ -175,6 +175,15 @@ export default function CreatorPage() {
             {/* Social Bar - Sticky bottom */}
             <SocialBar />
 
+            {/* Ad Tag Zone - zone 195419 */}
+            <AdTagZone />
+
+            {/* PropellerAds Zones */}
+            <PropellerPushNotifications />
+            <PropellerVignetteBanner />
+            <PropellerInPagePush />
+            <PropellerOnClickPopunder />
+
             <Header />
 
             <Container maxWidth="lg" sx={{ pt: { xs: 10, md: 15 }, pb: 12, flex: 1 }}>
@@ -259,9 +268,55 @@ export default function CreatorPage() {
                             </Button>
                         </Paper>
 
-                        {/* Ad Placement 1 - Below Input */}
-                        <Box sx={{ display: 'flex', justifyContent: 'center', my: 4 }}>
-                            <AdBanner300x250 placement="below-input" />
+                        {/* ========== COMPREHENSIVE AD ZONE - Below Hero ========== */}
+                        <Box
+                            sx={{
+                                my: 6,
+                                p: 3,
+                                borderRadius: 4,
+                                bgcolor: 'rgba(0,0,0,0.01)',
+                                border: '1px solid rgba(0,0,0,0.05)'
+                            }}
+                        >
+                            <Typography
+                                variant="caption"
+                                sx={{
+                                    display: 'block',
+                                    textAlign: 'center',
+                                    color: '#999',
+                                    fontSize: 9,
+                                    letterSpacing: 2,
+                                    mb: 3,
+                                    opacity: 0.6
+                                }}
+                            >
+                                SPONSORED CONTENT - SUPPORT FREE SERVICES
+                            </Typography>
+
+                            {/* 728x90 Leaderboard - Top */}
+                            <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
+                                <AdBanner728x90 placement="hero-top" />
+                            </Box>
+
+                            {/* 300x250 Banner #1 */}
+                            <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
+                                <AdBanner300x250 placement="hero-300-1" />
+                            </Box>
+
+                            {/* Native Banner - 4 images */}
+                            <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
+                                <NativeBanner placement="hero-native" />
+                            </Box>
+
+                            {/* 300x250 Banner #2 */}
+                            <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
+                                <AdBanner300x250 placement="hero-300-2" />
+                            </Box>
+
+                            {/* 728x90 Leaderboard - Bottom */}
+                            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                                <AdBanner728x90 placement="hero-bottom" />
+                            </Box>
                         </Box>
 
 
@@ -389,14 +444,22 @@ export default function CreatorPage() {
                                             </Button>
                                         </Box>
 
-                                        {/* Interstitial Note */}
-                                        <Box sx={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', py: 4 }}>
-                                            <Typography variant="caption" sx={{ color: '#999', fontSize: 10, letterSpacing: 1, mb: 1 }}>
+                                        {/* Ad Content - Show multiple ads during 5 seconds */}
+                                        <Box sx={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 2 }}>
+                                            <Typography variant="caption" sx={{ color: '#fff', fontSize: 10, letterSpacing: 1.5, mb: 1, opacity: 0.8 }}>
                                                 SPONSORED CONTENT
                                             </Typography>
-                                            <Typography variant="body2" sx={{ color: '#bbb', textAlign: 'center', maxWidth: 280 }}>
-                                                Ads help us keep LuminaQR free for everyone
-                                            </Typography>
+
+                                            {/* Show different ads based on countdown */}
+                                            {adCountdown > 3 ? (
+                                                <AdBanner300x250 placement="interstitial-1" />
+                                            ) : adCountdown > 0 ? (
+                                                <Box sx={{ width: '100%', maxWidth: 360 }}>
+                                                    <NativeBanner placement="interstitial-2" />
+                                                </Box>
+                                            ) : (
+                                                <AdBanner300x250 placement="interstitial-3" />
+                                            )}
                                         </Box>
 
                                         {/* Info Text */}
@@ -506,9 +569,9 @@ export default function CreatorPage() {
             <Box sx={{ borderTop: '1px solid #f1f3f4', bgcolor: '#fff', py: 12 }}>
 
                 <Container maxWidth="lg">
-                    {/* Ad Placement 4 - Above Tools */}
+                    {/* Ad Placement - Native Banner Above Tools */}
                     <Box sx={{ display: 'flex', justifyContent: 'center', mb: 6 }}>
-                        <AdBanner728x90 placement="above-tools" />
+                        <NativeBanner placement="above-tools" />
                     </Box>
 
 
