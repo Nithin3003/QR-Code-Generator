@@ -91,6 +91,30 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* 7searchppc Verification */}
+        <meta name="7searchppc" content="984482e6f5006ccb66e4205b1736541e" />
+
+        {/* Ezoic Privacy Scripts - Load First */}
+        <script
+          data-cfasync="false"
+          src="https://cmp.gatekeeperconsent.com/min.js"
+        ></script>
+        <script
+          data-cfasync="false"
+          src="https://the.gatekeeperconsent.com/cmp.min.js"
+        ></script>
+
+        {/* Ezoic Header Script */}
+        <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.ezstandalone = window.ezstandalone || {};
+              ezstandalone.cmd = ezstandalone.cmd || [];
+            `
+          }}
+        />
+
         {/* PropellerAds - OnClick (Popunder) */}
         <script
           src="https://quge5.com/88/tag.min.js"

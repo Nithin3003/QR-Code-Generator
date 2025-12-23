@@ -1,7 +1,8 @@
 # PropellerAds
 5gvci.com, 10364434, DIRECT
+3nbf4.com, 10364466, DIRECT
 
-# Google AdSense (if you have it)
-# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
-
-# Add more ad networks as needed
+# Ezoic
+# For dynamic ads.txt management, redirect to: https://srv.adstxtmanager.com/19390/lumina-qr.vercel.app
+ezoic.com, 19390, DIRECT
+google.com, pub-9840595308069212, RESELLER, f08c47fec0942fa0

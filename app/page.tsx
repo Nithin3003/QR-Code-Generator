@@ -99,6 +99,13 @@ export default function CreatorPage() {
 
     useEffect(() => {
         setMounted(true);
+
+        // Initialize Ezoic ads after mount
+        if (typeof window !== 'undefined' && (window as any).ezstandalone) {
+            (window as any).ezstandalone.cmd.push(function () {
+                (window as any).ezstandalone.showAds(101, 102, 103, 104, 105);
+            });
+        }
     }, []);
 
     // Countdown timer for ad
@@ -258,6 +265,10 @@ export default function CreatorPage() {
                             </Button>
                         </Paper>
 
+                        {/* Ezoic Ad Placement 101 - Below Input */}
+                        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 6, mb: 4 }}>
+                            <div id="ezoic-pub-ad-placeholder-101"></div>
+                        </Box>
 
 
                         {/* Featured Tools / Credibility Section */}
@@ -479,6 +490,10 @@ export default function CreatorPage() {
                                             </Button>
                                         </Stack>
 
+                                        {/* Ezoic Ad Placement 103 - In QR Result */}
+                                        <Box sx={{ mt: 4, pt: 3, borderTop: '1px dashed #eee', display: 'flex', justifyContent: 'center' }}>
+                                            <div id="ezoic-pub-ad-placeholder-103"></div>
+                                        </Box>
 
                                     </Paper>
                                 </motion.div>
@@ -492,6 +507,10 @@ export default function CreatorPage() {
             <Box sx={{ borderTop: '1px solid #f1f3f4', bgcolor: '#fff', py: 12 }}>
 
                 <Container maxWidth="lg">
+                    {/* Ezoic Ad Placement 104 - Above Tools */}
+                    <Box sx={{ display: 'flex', justifyContent: 'center', mb: 6 }}>
+                        <div id="ezoic-pub-ad-placeholder-104"></div>
+                    </Box>
 
 
                     <Typography variant="h4" sx={{ fontWeight: 800, textAlign: 'center', mb: 8 }}>More Tools for Creators</Typography>
