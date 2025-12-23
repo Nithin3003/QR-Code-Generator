@@ -35,6 +35,7 @@ import {
 import { QRCodeCanvas } from "qrcode.react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BrandLogo } from "@/components/BrandLogo";
+import { AdBanner300x250, PropellerAd, EzoicAd, AdContainer } from "@/components/AdBanner";
 
 // --- Header Component ---
 const Header = () => (
@@ -266,10 +267,10 @@ export default function CreatorPage() {
                             </Button>
                         </Paper>
 
-                        {/* Ezoic Ad Placement 101 - Below Input */}
-                        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 6, mb: 4 }}>
-                            <div id="ezoic-pub-ad-placeholder-101"></div>
-                        </Box>
+                        {/* Ad Placement 1 - Below Input */}
+                        <AdContainer>
+                            <AdBanner300x250 />
+                        </AdContainer>
 
 
                         {/* Featured Tools / Credibility Section */}
@@ -299,7 +300,10 @@ export default function CreatorPage() {
                             </Grid>
                         </Box>
 
-
+                        {/* Ad Placement 2 - After Features */}
+                        <AdContainer>
+                            <EzoicAd placeholderId="ezoic-pub-ad-placeholder-102" />
+                        </AdContainer>
                     </Box>
 
                     {/* Right: QR Canvas & Illustration Style Result */}
@@ -393,12 +397,14 @@ export default function CreatorPage() {
                                             </Button>
                                         </Box>
 
-                                        {/* PropellerAds In-Page Push will display here */}
-                                        <Box sx={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
-                                            <Typography variant="caption" sx={{ color: '#999', fontSize: 10, letterSpacing: 1, mb: 2 }}>
-                                                SPONSORED
+                                        {/* Interstitial Note */}
+                                        <Box sx={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', py: 4 }}>
+                                            <Typography variant="caption" sx={{ color: '#999', fontSize: 10, letterSpacing: 1, mb: 1 }}>
+                                                SPONSORED CONTENT
                                             </Typography>
-                                            <div id="container-5f51a81584d19c2bdbde3b56bee480e0"></div>
+                                            <Typography variant="body2" sx={{ color: '#bbb', textAlign: 'center', maxWidth: 280 }}>
+                                                Ads help us keep LuminaQR free for everyone
+                                            </Typography>
                                         </Box>
 
                                         {/* Info Text */}
@@ -491,9 +497,11 @@ export default function CreatorPage() {
                                             </Button>
                                         </Stack>
 
-                                        {/* Ezoic Ad Placement 103 - In QR Result */}
-                                        <Box sx={{ mt: 4, pt: 3, borderTop: '1px dashed #eee', display: 'flex', justifyContent: 'center' }}>
-                                            <div id="ezoic-pub-ad-placeholder-103"></div>
+                                        {/* Ad Placement 3 - In QR Result */}
+                                        <Box sx={{ mt: 4, pt: 3, borderTop: '1px dashed #eee' }}>
+                                            <AdContainer label="SPONSORED">
+                                                <AdBanner300x250 />
+                                            </AdContainer>
                                         </Box>
 
                                     </Paper>
@@ -508,10 +516,10 @@ export default function CreatorPage() {
             <Box sx={{ borderTop: '1px solid #f1f3f4', bgcolor: '#fff', py: 12 }}>
 
                 <Container maxWidth="lg">
-                    {/* Ezoic Ad Placement 104 - Above Tools */}
-                    <Box sx={{ display: 'flex', justifyContent: 'center', mb: 6 }}>
-                        <div id="ezoic-pub-ad-placeholder-104"></div>
-                    </Box>
+                    {/* Ad Placement 4 - Above Tools */}
+                    <AdContainer>
+                        <EzoicAd placeholderId="ezoic-pub-ad-placeholder-104" />
+                    </AdContainer>
 
 
                     <Typography variant="h4" sx={{ fontWeight: 800, textAlign: 'center', mb: 8 }}>More Tools for Creators</Typography>
@@ -531,6 +539,10 @@ export default function CreatorPage() {
                         ))}
                     </Grid>
 
+                    {/* Ad Placement 5 - Below Tools */}
+                    <AdContainer>
+                        <AdBanner300x250 />
+                    </AdContainer>
 
                 </Container>
             </Box >
