@@ -93,6 +93,8 @@ export default function CreatorPage() {
     const [text, setText] = useState("");
     const [shortUrl, setShortUrl] = useState("");
     const [loading, setLoading] = useState(false);
+    const [showAd, setShowAd] = useState(false);
+    const [adCountdown, setAdCountdown] = useState(5);
     const [alert, setAlert] = useState<{ open: boolean; message: string; severity: 'success' | 'error' }>({ open: false, message: '', severity: 'success' });
     const qrRef = useRef<HTMLDivElement>(null);
 
@@ -100,7 +102,20 @@ export default function CreatorPage() {
         setMounted(true);
     }, []);
 
+    // Countdown timer for ad
+    useEffect(() => {
+        if (showAd && adCountdown > 0) {
+            const timer = setTimeout(() => setAdCountdown(adCountdown - 1), 1000);
+            return () => clearTimeout(timer);
+        }
+    }, [showAd, adCountdown]);
+
     if (!mounted) return null;
+
+    const skipAd = () => {
+        setShowAd(false);
+        setAdCountdown(5);
+    };
 
     const handleDownload = () => {
         const canvas = qrRef.current?.querySelector("canvas");
@@ -138,6 +153,8 @@ export default function CreatorPage() {
             const data = await res.json();
             if (data.shortUrl) {
                 setShortUrl(data.shortUrl);
+                setShowAd(true); // Show ad before QR
+                setAdCountdown(5); // Reset countdown
                 setAlert({ open: true, message: "QR Code generated successfully!", severity: 'success' });
             } else {
                 throw new Error(data.error || "Failed to generate QR");
@@ -242,6 +259,12 @@ export default function CreatorPage() {
                             </Button>
                         </Paper>
 
+                        {/* Ad Banner Below Input */}
+                        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 10, mb: 8 }}>
+                            <Typography variant="caption" sx={{ color: '#999', fontSize: 10, letterSpacing: 1, mb: 2 }}>SPONSORED</Typography>
+                            <AdBanner300x250 />
+                        </Box>
+
                         {/* Featured Tools / Credibility Section */}
                         <Box sx={{ mt: 10 }}>
                             <Typography variant="overline" sx={{ color: "#70757a", letterSpacing: "0.1em", fontWeight: 700 }}>
@@ -267,6 +290,12 @@ export default function CreatorPage() {
                                     </Stack>
                                 </Grid>
                             </Grid>
+                        </Box>
+
+                        {/* Ad Banner After Features */}
+                        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 10 }}>
+                            <Typography variant="caption" sx={{ color: '#999', fontSize: 10, letterSpacing: 1, mb: 2 }}>SPONSORED</Typography>
+                            <AdBanner300x250 />
                         </Box>
                     </Box>
 
@@ -306,7 +335,77 @@ export default function CreatorPage() {
                                         Crafting your QR...
                                     </Typography>
                                 </motion.div>
+                            ) : showAd ? (
+                                <motion.div
+                                    key="ad-interstitial"
+                                    initial={{ opacity: 0, scale: 0.95 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0.95 }}
+                                    className="w-full"
+                                >
+                                    <Paper
+                                        elevation={0}
+                                        sx={{
+                                            p: { xs: 3, sm: 5 },
+                                            borderRadius: 8,
+                                            bgcolor: "#000",
+                                            textAlign: "center",
+                                            width: "100%",
+                                            maxWidth: { xs: "100%", sm: 380 },
+                                            mx: "auto",
+                                            position: 'relative',
+                                            overflow: "hidden",
+                                            minHeight: 400,
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            justifyContent: 'space-between'
+                                        }}
+                                    >
+                                        {/* Skip Button - Top Right */}
+                                        <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
+                                            <Button
+                                                onClick={skipAd}
+                                                disabled={adCountdown > 0}
+                                                variant="contained"
+                                                size="small"
+                                                sx={{
+                                                    bgcolor: adCountdown === 0 ? '#fff' : 'rgba(255,255,255,0.3)',
+                                                    color: adCountdown === 0 ? '#000' : '#fff',
+                                                    textTransform: 'none',
+                                                    fontWeight: 700,
+                                                    fontSize: '0.75rem',
+                                                    borderRadius: 2,
+                                                    px: 2,
+                                                    py: 0.5,
+                                                    '&:hover': {
+                                                        bgcolor: adCountdown === 0 ? '#f5f5f5' : 'rgba(255,255,255,0.4)'
+                                                    },
+                                                    '&:disabled': {
+                                                        bgcolor: 'rgba(255,255,255,0.3)',
+                                                        color: '#fff'
+                                                    }
+                                                }}
+                                            >
+                                                {adCountdown > 0 ? `Skip in ${adCountdown}s` : 'Skip Ad →'}
+                                            </Button>
+                                        </Box>
+
+                                        {/* Ad Content */}
+                                        <Box sx={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
+                                            <Typography variant="caption" sx={{ color: '#999', fontSize: 10, letterSpacing: 1, mb: 2 }}>
+                                                SPONSORED
+                                            </Typography>
+                                            <AdBanner300x250 />
+                                        </Box>
+
+                                        {/* Info Text */}
+                                        <Typography variant="caption" sx={{ color: '#999', mt: 2 }}>
+                                            Your QR code will be revealed after the ad
+                                        </Typography>
+                                    </Paper>
+                                </motion.div>
                             ) : (
+
                                 <motion.div
                                     key="result"
                                     initial={{ opacity: 0, scale: 0.9 }}
@@ -400,11 +499,18 @@ export default function CreatorPage() {
                         </AnimatePresence>
                     </Box>
                 </Box>
-            </Container>
+            </Container >
 
             {/* Featured Tools Section below fold */}
             <Box sx={{ borderTop: '1px solid #f1f3f4', bgcolor: '#fff', py: 12 }}>
+
                 <Container maxWidth="lg">
+                    {/* Ad Banner Above Tools Section */}
+                    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mb: 8 }}>
+                        <Typography variant="caption" sx={{ color: '#999', fontSize: 10, letterSpacing: 1, mb: 2 }}>SPONSORED</Typography>
+                        <AdBanner300x250 />
+                    </Box>
+
                     <Typography variant="h4" sx={{ fontWeight: 800, textAlign: 'center', mb: 8 }}>More Tools for Creators</Typography>
                     <Grid container spacing={4}>
                         {[
@@ -421,8 +527,14 @@ export default function CreatorPage() {
                             </Grid>
                         ))}
                     </Grid>
+
+                    {/* Ad Banner Below Tools Section */}
+                    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 10 }}>
+                        <Typography variant="caption" sx={{ color: '#999', fontSize: 10, letterSpacing: 1, mb: 2 }}>SPONSORED</Typography>
+                        <AdBanner300x250 />
+                    </Box>
                 </Container>
-            </Box>
+            </Box >
 
             <ActivityTicker />
 
@@ -436,6 +548,6 @@ export default function CreatorPage() {
                     {alert.message}
                 </Alert>
             </Snackbar>
-        </Box>
+        </Box >
     );
 }
