@@ -101,11 +101,12 @@ export default function CreatorPage() {
         setMounted(true);
 
         // Initialize Ezoic ads after mount
-        if (typeof window !== 'undefined' && (window as any).ezstandalone) {
-            (window as any).ezstandalone.cmd.push(function () {
-                (window as any).ezstandalone.showAds(101, 102, 103, 104, 105);
-            });
-        }
+        // Temporarily disabled until Ezoic approves the site
+        // if (typeof window !== 'undefined' && (window as any).ezstandalone) {
+        //     (window as any).ezstandalone.cmd.push(function () {
+        //         (window as any).ezstandalone.showAds(101, 102, 103, 104, 105);
+        //     });
+        // }
     }, []);
 
     // Countdown timer for ad
