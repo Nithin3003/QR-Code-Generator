@@ -169,8 +169,8 @@ export default function CreatorPage() {
 
     return (
         <Box sx={{ minHeight: "100vh", bgcolor: "#fff", display: "flex", flexDirection: "column" }}>
-            {/* Popunder Ad - Loads once */}
-            <PopunderAd />
+            {/* Popunder Ad REMOVED for better UX */}
+            {/* <PopunderAd /> */}
 
             {/* Social Bar - Sticky bottom */}
             <SocialBar />
@@ -321,10 +321,7 @@ export default function CreatorPage() {
                                 SPONSORED CONTENT - SUPPORT FREE SERVICES
                             </Typography>
 
-                            {/* 728x90 Leaderboard - Top */}
-                            <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
-                                <AdBanner728x90 placement="hero-top" />
-                            </Box>
+                            {/* 728x90 Leaderboard - Top - MOVED TO BOTTOM */}
 
                             {/* 300x250 Banner #1 */}
                             <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
@@ -569,6 +566,11 @@ export default function CreatorPage() {
                         <NativeBanner placement="above-tools" />
                     </Box>
 
+
+                    {/* Ad Placement - Leaderboard (Moved from Top) */}
+                    <Box sx={{ display: 'flex', justifyContent: 'center', mb: 8 }}>
+                        <AdBanner728x90 placement="more-tools-header" />
+                    </Box>
 
                     <Typography variant="h4" sx={{ fontWeight: 800, textAlign: 'center', mb: 8 }}>More Tools for Creators</Typography>
                     <Grid container spacing={4}>
