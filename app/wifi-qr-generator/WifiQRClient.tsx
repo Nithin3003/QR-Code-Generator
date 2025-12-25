@@ -99,7 +99,7 @@ export default function WifiQRClient() {
             <SocialBar />
             <AdTagZone />
             <PropellerPushNotifications />
-            <PropellerVignetteBanner />
+            {/* <PropellerVignetteBanner /> */}
             <PropellerInPagePush />
             <Header />
 

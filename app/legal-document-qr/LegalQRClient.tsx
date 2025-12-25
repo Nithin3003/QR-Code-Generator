@@ -55,7 +55,7 @@ export default function LegalQRClient() {
             <SocialBar />
             <AdTagZone />
             <PropellerPushNotifications />
-            <PropellerVignetteBanner />
+            {/* <PropellerVignetteBanner /> */}
             <Header />
 
             <Container maxWidth="lg" sx={{ pt: 15, pb: 12, flex: 1 }}>

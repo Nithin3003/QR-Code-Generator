@@ -180,7 +180,7 @@ export default function CreatorPage() {
 
             {/* PropellerAds Zones */}
             <PropellerPushNotifications />
-            <PropellerVignetteBanner />
+            {/* <PropellerVignetteBanner /> */}
             <PropellerInPagePush />
             {/* OnClick Popunder REMOVED for better UX */}
 
