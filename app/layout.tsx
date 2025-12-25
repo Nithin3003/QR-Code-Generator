@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
+import SchemaJsonLd from "@/components/SchemaJsonLd";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -123,6 +124,8 @@ export default function RootLayout({
 
         {/* PropellerAds Native Banner Container */}
         <div id="container-9b4e84791703585706cbeb6c94a84d84"></div>
+
+        <SchemaJsonLd />
 
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>

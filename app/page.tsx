@@ -575,15 +575,49 @@ export default function CreatorPage() {
                     <Typography variant="h4" sx={{ fontWeight: 800, textAlign: 'center', mb: 8 }}>More Tools for Creators</Typography>
                     <Grid container spacing={4}>
                         {[
-                            { title: 'Dynamic Links', desc: 'Edit target URL without changing QR' },
-                            { title: 'Analytics Pro', desc: 'Detailed scan reports and location data' },
-                            { title: 'Custom Branding', desc: 'Add logos and brand colors to QRs' }
+                            { title: 'WiFi QR Generator', desc: 'Create instant WiFi access codes for customers', link: '/wifi-qr-generator', status: 'NEW' },
+                            { title: 'Crypto Payment QR', desc: 'Accept Bitcoin & Crypto payments securely', link: '/crypto-payment-qr', status: 'HOT' },
+                            { title: 'Vector QR for Designers', desc: 'Print-ready high resolution codes', link: '/vector-qr-for-designers', status: 'PRO' },
+                            { title: 'PDF to QR (Upcoming)', desc: 'Convert PDF files to scannable codes', link: '#', status: 'SOON' },
+                            { title: 'Link Shortener (Upcoming)', desc: 'Shorten URLs with custom domains', link: '#', status: 'SOON' }
                         ].map((tool, i) => (
                             <Grid size={{ xs: 12, md: 4 }} key={i}>
-                                <Paper elevation={0} sx={{ p: 4, borderRadius: 6, border: '1px solid #eee', transition: 'all 0.3s', '&:hover': { transform: 'translateY(-5px)', boxShadow: '0 20px 40px rgba(0,0,0,0.05)' } }}>
+                                <Paper
+                                    component="a"
+                                    href={tool.link}
+                                    elevation={0}
+                                    sx={{
+                                        p: 4,
+                                        borderRadius: 6,
+                                        border: '1px solid #eee',
+                                        transition: 'all 0.3s',
+                                        display: 'block',
+                                        textDecoration: 'none',
+                                        color: 'inherit',
+                                        position: 'relative',
+                                        overflow: 'hidden',
+                                        '&:hover': { transform: 'translateY(-5px)', boxShadow: '0 20px 40px rgba(0,0,0,0.05)', borderColor: '#1976d2' }
+                                    }}
+                                >
+                                    {tool.status && (
+                                        <Box sx={{
+                                            position: 'absolute',
+                                            top: 12,
+                                            right: 12,
+                                            px: 1,
+                                            py: 0.5,
+                                            bgcolor: tool.status === 'NEW' ? '#e3f2fd' : tool.status === 'HOT' ? '#fff3e0' : '#f3f3f3',
+                                            color: tool.status === 'NEW' ? '#1976d2' : tool.status === 'HOT' ? '#e65100' : '#666',
+                                            fontSize: 10,
+                                            fontWeight: 700,
+                                            borderRadius: 1
+                                        }}>
+                                            {tool.status}
+                                        </Box>
+                                    )}
                                     <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>{tool.title}</Typography>
                                     <Typography variant="body2" sx={{ color: '#5f6368' }}>{tool.desc}</Typography>
-                                    <Button sx={{ mt: 2, p: 0, textTransform: 'none', fontWeight: 600 }}>Coming Soon →</Button>
+                                    {tool.link !== '#' && <Typography variant="caption" sx={{ mt: 2, display: 'block', color: '#1976d2', fontWeight: 600 }}>Try Now →</Typography>}
                                 </Paper>
                             </Grid>
                         ))}
