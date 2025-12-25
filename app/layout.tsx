@@ -30,6 +30,9 @@ export const metadata: Metadata = {
   creator: "LuminaQR",
   publisher: "LuminaQR",
   manifest: "/manifest.json",
+  verification: {
+    google: "YOUR_GOOGLE_VERIFICATION_CODE_HERE", // TODO: User to check Google Search Console for this code
+  },
 
   // OpenGraph
   openGraph: {
@@ -71,11 +74,6 @@ export const metadata: Metadata = {
     },
   },
 
-  verification: {
-    google: "your-google-verification-code",
-    // yandex: "your-yandex-verification-code",
-    // bing: "your-bing-verification-code",
-  },
 
   alternates: {
     canonical: "https://lumina-qr.vercel.app"
