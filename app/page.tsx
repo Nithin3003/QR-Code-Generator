@@ -578,8 +578,9 @@ export default function CreatorPage() {
                             { title: 'WiFi QR Generator', desc: 'Create instant WiFi access codes for customers', link: '/wifi-qr-generator', status: 'NEW' },
                             { title: 'Crypto Payment QR', desc: 'Accept Bitcoin & Crypto payments securely', link: '/crypto-payment-qr', status: 'HOT' },
                             { title: 'Vector QR for Designers', desc: 'Print-ready high resolution codes', link: '/vector-qr-for-designers', status: 'PRO' },
-                            { title: 'PDF to QR (Upcoming)', desc: 'Convert PDF files to scannable codes', link: '#', status: 'SOON' },
-                            { title: 'Link Shortener (Upcoming)', desc: 'Shorten URLs with custom domains', link: '#', status: 'SOON' }
+                            { title: 'Secure Banking QR', desc: 'Encrypted codes for mortgage & finance', link: '/secure-banking-qr', status: 'ENTERPRISE' },
+                            { title: 'Legal Document QR', desc: 'Case management for law firms', link: '/legal-document-qr', status: 'LEGAL' },
+                            { title: 'SaaS Spend Optimizer', desc: 'Find unused subscriptions in 1 click', link: '/saas-spend-optimizer', status: 'B2B SAVER' }
                         ].map((tool, i) => (
                             <Grid size={{ xs: 12, md: 4 }} key={i}>
                                 <Paper
