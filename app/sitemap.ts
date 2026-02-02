@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://luminaqr.nithinms.cv'; // Updated to user's custom domain
+    const baseUrl = 'http://free-qrcode.nithinms.cv'; // Updated to user's custom domain
 
     return [
         {

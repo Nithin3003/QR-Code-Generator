@@ -1,8 +1,0 @@
-# PropellerAds
-5gvci.com, 10364434, DIRECT
-3nbf4.com, 10364466, DIRECT
-
-# Ezoic
-# For dynamic ads.txt management, redirect to: https://srv.adstxtmanager.com/19390/luminaqr.vercel.app
-ezoic.com, 19390, DIRECT
-google.com, pub-9840595308069212, RESELLER, f08c47fec0942fa0

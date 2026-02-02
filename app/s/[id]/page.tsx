@@ -13,9 +13,11 @@ import {
     Settings,
     AccountCircle,
 } from "@mui/icons-material";
+import { Grid } from "@mui/material";
 import RedirectClient from './redirect-client';
 import { BrandLogo } from '@/components/BrandLogo';
-import AdBanner300x250 from '@/components/AdBanner';
+import { AdFrame } from "@/components/ads/AdFrame";
+import { NativeAd } from "@/components/ads/NativeAd";
 
 // Cloudflare Helper
 async function getLink(key: string) {
@@ -55,6 +57,51 @@ const Header = () => (
     </AppBar>
 );
 
+const TopAds = () => (
+    <Box sx={{ mt: 10, display: 'flex', justifyContent: 'center' }}>
+        {/* Desktop Leaderboard */}
+        <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+            <AdFrame
+                adLabel="4"
+                width={728}
+                height={90}
+                adCode={`
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : 'b29ad6bfaa9af19133c9f78db0f3f771',
+                            'format' : 'iframe',
+                            'height' : 90,
+                            'width' : 728,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//www.highperformanceformat.com/b29ad6bfaa9af19133c9f78db0f3f771/invoke.js"></script>
+                `}
+            />
+        </Box>
+        {/* Mobile Banner */}
+        <Box sx={{ display: { xs: 'block', md: 'none' } }}>
+            <AdFrame
+                adLabel="3"
+                width={320}
+                height={50}
+                adCode={`
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : '54b7571156c573476acce06be6baa394',
+                            'format' : 'iframe',
+                            'height' : 50,
+                            'width' : 320,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//www.highperformanceformat.com/54b7571156c573476acce06be6baa394/invoke.js"></script>
+                `}
+            />
+        </Box>
+    </Box>
+);
+
 export default async function InterstitialPage({ params }: Props) {
     const { id } = await params;
     const destination = await getLink(id);
@@ -66,21 +113,91 @@ export default async function InterstitialPage({ params }: Props) {
     return (
         <Box sx={{ minHeight: "100vh", bgcolor: "#fff", display: "flex", flexDirection: "column" }}>
             <Header />
-            <Container maxWidth="sm" sx={{ mt: { xs: 12, md: 20 }, px: 3, pb: 10 }}>
-                <RedirectClient
-                    destination={destination}
-                    shortId={id}
-                />
 
-                {/* AD PLACEHOLDER */}
-                {/* AD - 300x250 */}
-                <Box sx={{ mt: 6, width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
-                    <Typography variant="overline" sx={{ color: "#70757a", letterSpacing: 2, fontWeight: 700, mb: 2 }}>
-                        Sponsored Transmission
-                    </Typography>
-                    <AdBanner300x250 />
+            <Box sx={{ display: 'flex', justifyContent: 'center', mt: 10, px: 2 }}>
+                {/* Left Sidebar Ad */}
+                <Box sx={{ display: { xs: 'none', lg: 'block' }, position: 'fixed', left: 20, top: 100 }}>
+                    <AdFrame
+                        adLabel="1"
+                        width={160}
+                        height={600}
+                        adCode={`
+                            <script type="text/javascript">
+                                atOptions = {
+                                    'key' : '89f66e5408cb76f040257ec542ae678b',
+                                    'format' : 'iframe',
+                                    'height' : 600,
+                                    'width' : 160,
+                                    'params' : {}
+                                };
+                            </script>
+                            <script type="text/javascript" src="//www.highperformanceformat.com/89f66e5408cb76f040257ec542ae678b/invoke.js"></script>
+                        `}
+                    />
                 </Box>
-            </Container>
+
+                {/* Main Content */}
+                <Container maxWidth="sm" sx={{ px: 3, pb: 10, mx: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <TopAds />
+                    <RedirectClient
+                        destination={destination}
+                        shortId={id}
+                    />
+
+                    {/* --- Ads 6, 7, 8 Grid (Stacked on Mobile) --- */}
+                    <Box sx={{ mt: 8, width: '100%' }}>
+                        <Grid container spacing={2} justifyContent="center">
+                            {[6, 7, 8].map((label) => (
+                                <Grid size={{ xs: 12 }} key={label} sx={{ display: 'flex', justifyContent: 'center' }}>
+                                    <AdFrame
+                                        adLabel={label.toString()}
+                                        width={300}
+                                        height={250}
+                                        adCode={`
+                                            <script type="text/javascript">
+                                                atOptions = {
+                                                    'key' : '67e830159b64ae4a1630b02bbab38e4b',
+                                                    'format' : 'iframe',
+                                                    'height' : 250,
+                                                    'width' : 300,
+                                                    'params' : {}
+                                                };
+                                            </script>
+                                            <script type="text/javascript" src="//www.highperformanceformat.com/67e830159b64ae4a1630b02bbab38e4b/invoke.js"></script>
+                                        `}
+                                    />
+                                </Grid>
+                            ))}
+                        </Grid>
+                    </Box>
+
+                    {/* --- Native Ad (Ad Label 5) --- */}
+                    <Box sx={{ mt: 8 }}>
+                        <NativeAd adLabel="5" />
+                    </Box>
+                </Container>
+
+                {/* Right Sidebar Ad */}
+                <Box sx={{ display: { xs: 'none', lg: 'block' }, position: 'fixed', right: 20, top: 100 }}>
+                    <AdFrame
+                        adLabel="2"
+                        width={300}
+                        height={250}
+                        adCode={`
+                            <script type="text/javascript">
+                                atOptions = {
+                                    'key' : '67e830159b64ae4a1630b02bbab38e4b',
+                                    'format' : 'iframe',
+                                    'height' : 250,
+                                    'width' : 300,
+                                    'params' : {}
+                                };
+                            </script>
+                            <script type="text/javascript" src="//www.highperformanceformat.com/67e830159b64ae4a1630b02bbab38e4b/invoke.js"></script>
+                        `}
+                    />
+                </Box>
+            </Box>
         </Box>
     );
 }

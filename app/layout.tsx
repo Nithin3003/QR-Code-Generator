@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
@@ -7,10 +8,10 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "LuminaQR - Free QR Code Generator | Fast & Reliable",
-    template: "%s | LuminaQR"
+    default: "QR Code - Free QR Code Generator | Fast & Reliable",
+    template: "%s | QR Code"
   },
-  description: "Generate high-quality QR codes instantly with LuminaQR. Free, fast, and serverless QR code generator. Create QR codes for URLs, text, WiFi, and more. No registration required.",
+  description: "Generate high-quality QR codes instantly. Free, fast, and serverless QR code generator. Create QR codes for URLs, text, WiFi, and more. No registration required.",
   keywords: [
     "QR code generator",
     "free QR code",
@@ -26,28 +27,41 @@ export const metadata: Metadata = {
     "WiFi QR code",
     "vCard QR code"
   ],
-  authors: [{ name: "LuminaQR Team" }],
-  creator: "LuminaQR",
-  publisher: "LuminaQR",
+  authors: [{ name: "QR Code Team" }],
+  creator: "QR Code",
+  publisher: "QR Code",
   manifest: "/manifest.json",
+  themeColor: "#1976d2",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "QR Code",
+  },
+  icons: {
+    icon: "/pwa-icon.png",
+    apple: "/pwa-icon.png",
+  },
   verification: {
     google: "YOUR_GOOGLE_VERIFICATION_CODE_HERE", // TODO: User to check Google Search Console for this code
+    other: {
+      clckd: 'd5c826720f26284f291350170461876e',
+    },
   },
 
   // OpenGraph
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://lumina-qr.vercel.app",
-    title: "LuminaQR - Free QR Code Generator",
+    url: "http://free-qrcode.nithinms.cv",
+    title: "QR Code - Free QR Code Generator",
     description: "Generate high-quality QR codes instantly. Free, fast, and serverless QR code generator for URLs, text, WiFi, and more.",
-    siteName: "LuminaQR",
+    siteName: "QR Code",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "LuminaQR - Free QR Code Generator"
+        alt: "QR Code - Free QR Code Generator"
       }
     ]
   },
@@ -55,10 +69,10 @@ export const metadata: Metadata = {
   // Twitter
   twitter: {
     card: "summary_large_image",
-    title: "LuminaQR - Free QR Code Generator",
+    title: "QR Code - Free QR Code Generator",
     description: "Generate high-quality QR codes instantly. Free, fast, and serverless.",
     images: ["/og-image.png"],
-    creator: "@luminaqr"
+    creator: "@qrcode"
   },
 
   // Additional metadata
@@ -76,7 +90,7 @@ export const metadata: Metadata = {
 
 
   alternates: {
-    canonical: "https://lumina-qr.vercel.app"
+    canonical: "http://free-qrcode.nithinms.cv"
   },
 
   category: "Technology",
@@ -89,40 +103,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        {/* 7searchppc Verification */}
-        <meta name="7searchppc" content="984482e6f5006ccb66e4205b1736541e" />
-
-        {/* Ezoic Privacy Scripts - Load First */}
-        <script
-          data-cfasync="false"
-          src="https://cmp.gatekeeperconsent.com/min.js"
-        ></script>
-        <script
-          data-cfasync="false"
-          src="https://the.gatekeeperconsent.com/cmp.min.js"
-        ></script>
-
-        {/* Ezoic Header Script */}
-        <script async src="//www.ezojs.com/ezoic/sa.min.js"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.ezstandalone = window.ezstandalone || {};
-              ezstandalone.cmd = ezstandalone.cmd || [];
-            `
-          }}
-        />
-
-        {/* Ad scripts removed - now loaded via components for better control */}
-      </head>
       <body>
-        {/* PropellerAds In-Page Push Container */}
-        <div id="container-5f51a81584d19c2bdbde3b56bee480e0"></div>
-
-        {/* PropellerAds Native Banner Container */}
-        <div id="container-9b4e84791703585706cbeb6c94a84d84"></div>
-
         <SchemaJsonLd />
 
         <AppRouterCacheProvider>
@@ -130,15 +111,17 @@ export default function RootLayout({
             <div className="min-h-screen">
               {children}
             </div>
-
-            <div id="carbon-ads-placeholder" className="fixed bottom-4 right-4 z-50 opacity-50 hover:opacity-100 transition-opacity">
-              {/* Ad Script would go here */}
-              <div className="text-[10px] text-gray-500 border border-gray-800 bg-black px-2 py-1 rounded">
-                ADS via Antigravity
-              </div>
-            </div>
           </ThemeProvider>
         </AppRouterCacheProvider>
+
+
+
+        {/* SocialBar Ad Implementation */}
+        <Script
+          id="socialbar-ad"
+          src="//pl25586221.effectivegatecpm.com/de/62/1d/de621d9659b85141042780e157776100.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

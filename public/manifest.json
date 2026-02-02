@@ -1,20 +1,22 @@
 {
-    "name": "LuminaQR",
-    "short_name": "LuminaQR",
+    "name": "QR Code Generator",
+    "short_name": "QR Code",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#ffffff",
-    "theme_color": "#000000",
+    "theme_color": "#1976d2",
     "icons": [
         {
-            "src": "/file.svg",
+            "src": "/pwa-icon.png",
             "sizes": "192x192",
-            "type": "image/svg+xml"
+            "type": "image/png",
+            "purpose": "any"
         },
         {
-            "src": "/file.svg",
+            "src": "/pwa-icon.png",
             "sizes": "512x512",
-            "type": "image/svg+xml"
+            "type": "image/png",
+            "purpose": "maskable"
         }
     ]
 }

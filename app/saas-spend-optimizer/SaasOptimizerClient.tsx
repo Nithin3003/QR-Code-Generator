@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { AppBar, Toolbar, Typography, Button, Box, Container, IconButton, Paper, Stack, Avatar, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Chip, LinearProgress } from "@mui/material";
-import { PieChart, TrendingUp, AttachMoney, Business, CloudCircle, Shield } from "@mui/icons-material";
+import { PieChart, TrendingUp, AttachMoney, Business, CloudCircle, Shield, ArrowForward } from "@mui/icons-material";
 import { motion } from "framer-motion";
 import { BrandLogo } from "@/components/BrandLogo";
 import AdBanner300x250, { NativeBanner, SocialBar, AdTagZone, PropellerPushNotifications } from "@/components/AdBanner";
@@ -59,7 +59,7 @@ export default function SaasOptimizerClient() {
                             Upload your expense CSV or connect securely to find hidden subscriptions, duplicate tools, and "Shadow IT" spending instantly.
                         </Typography>
 
-                        <Paper elevation={0} sx={{ p: 4, borderRadius: 4, border: "1px solid #e0e0e0", mb: 6 }}>
+                        <Paper elevation={0} sx={{ p: 4, borderRadius: 4, border: "1px solid #e0e0e0", mb: 6, position: 'relative', overflow: 'hidden' }}>
                             <Box sx={{ border: '2px dashed #6200ea', borderRadius: 2, bgcolor: '#f3e5f5', p: 4, textAlign: 'center', cursor: 'pointer', transition: 'all 0.2s', '&:hover': { bgcolor: '#ede7f6' } }} onClick={runAnalysis}>
                                 <CloudCircle sx={{ fontSize: 48, color: '#6200ea', mb: 1 }} />
                                 <Typography variant="h6" sx={{ fontWeight: 700, color: '#333' }}>
@@ -70,16 +70,18 @@ export default function SaasOptimizerClient() {
                                 </Typography>
                                 {analyzing && <LinearProgress sx={{ maxWidth: 200, mx: 'auto', mt: 2 }} color="secondary" />}
                             </Box>
-                            <Stack direction="row" spacing={2} sx={{ mt: 3, justifyContent: 'center' }}>
+
+                            {/* Z-PATTERN ANCHOR: High visibility ad placement */}
+                            <Box sx={{ mt: 3, p: 2, bgcolor: '#fff', borderRadius: 2, border: '1px solid #eee' }}>
+                                <Typography variant="caption" sx={{ color: '#999', display: 'flex', alignItems: 'center', mb: 1, fontSize: 10, letterSpacing: 1 }}>SPONSORED OPPORTUNITIES</Typography>
+                                <NativeBanner placement="saas-upload-anchor" />
+                            </Box>
+
+                            <Stack direction="row" spacing={2} sx={{ mt: 2, justifyContent: 'center', opacity: 0.7 }}>
                                 <Typography variant="caption" sx={{ color: '#999', display: 'flex', alignItems: 'center', gap: 0.5 }}><Business fontSize="inherit" /> Bank Level Security</Typography>
                                 <Typography variant="caption" sx={{ color: '#999', display: 'flex', alignItems: 'center', gap: 0.5 }}><Shield fontSize="inherit" /> Encrypted Processing</Typography>
                             </Stack>
                         </Paper>
-
-                        <Box sx={{ my: 4, p: 1, bgcolor: '#fff', borderRadius: 2 }}>
-                            <Typography variant="caption" sx={{ display: 'block', textAlign: 'center', color: '#999', mb: 1, fontSize: 10 }}>SPONSORED - SOFTWARE DEALS</Typography>
-                            <NativeBanner placement="saas-native" />
-                        </Box>
                     </Grid>
 
                     <Grid size={{ xs: 12, md: 5 }}>

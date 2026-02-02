@@ -24,7 +24,7 @@ export const BrandLogo = ({ size = 32 }: { size?: number }) => (
     <Box sx={{ display: "flex", alignItems: "center", gap: { xs: 1, sm: 1.5 } }}>
         <LogoIcon size={size} />
         <Typography variant="h6" component="div" sx={{ fontWeight: 800, letterSpacing: -0.5, fontSize: { xs: "1.2rem", md: "1.4rem" }, color: "#202124" }}>
-            Lumina<span style={{ color: "#1976d2" }}>QR</span>
+            QR<span style={{ color: "#1976d2" }}>Code</span>
         </Typography>
     </Box>
 );

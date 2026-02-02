@@ -17,9 +17,10 @@ interface Props {
 }
 
 export default function RedirectClient({ destination, shortId }: Props) {
-    const [timeLeft, setTimeLeft] = useState(5);
+    const [timeLeft, setTimeLeft] = useState(3);
     const [canSkip, setCanSkip] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
+    const hasTracked = React.useRef(false);
 
     let safeDestination = destination;
     if (!safeDestination.startsWith('http://') && !safeDestination.startsWith('https://')) {
@@ -29,15 +30,19 @@ export default function RedirectClient({ destination, shortId }: Props) {
     useEffect(() => {
         setIsMounted(true);
 
-        fetch('/api/track', {
-            method: 'POST',
-            body: JSON.stringify({
-                shortId: shortId,
-                country: 'Unknown-Client',
-                ua: navigator.userAgent,
-                timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19)
-            })
-        }).catch(err => console.log('Tracking error', err));
+        if (!hasTracked.current) {
+            hasTracked.current = true;
+            fetch('/api/track', {
+                method: 'POST',
+                keepalive: true,
+                body: JSON.stringify({
+                    shortId: shortId,
+                    country: 'Unknown-Client',
+                    ua: navigator.userAgent,
+                    timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19)
+                })
+            }).catch(err => console.log('Tracking error', err));
+        }
 
         const interval = setInterval(() => {
             setTimeLeft((prev) => {
@@ -50,12 +55,12 @@ export default function RedirectClient({ destination, shortId }: Props) {
             });
         }, 1000);
 
-        setTimeout(() => setCanSkip(true), 2000);
+        setTimeout(() => setCanSkip(true), 200);
 
         return () => clearInterval(interval);
     }, [safeDestination, shortId]);
 
-    const progress = ((5 - timeLeft) / 5) * 100;
+    const progress = ((3 - timeLeft) / 3) * 100;
 
     if (!isMounted) return null;
 
